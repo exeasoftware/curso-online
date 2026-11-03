@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<!-- producto de exeasoftware
+     diseño y programación   : Ramiro Valero
+     -->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos Online Exeasoftware - Tutorial Interactivo de Maquetación CSS</title>
+  
+  <!-- Vinculación del archivo de maquetación externo obligatorio -->
+  <link rel="stylesheet" href="maquetado.css">
+  
+  <!-- CDN de Tailwind CSS para la interfaz principal -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font - Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    code, pre {
+      font-family: 'Fira Code', monospace;
+    }
+    
+    /* Estilos dinámicos para el simulador de CSS embebidos para garantía de ejecución */
+    .demo-box-model {
+      margin: 20px;
+      padding: 20px;
+      border: 6px dashed #3b82f6;
+      background-color: #dbeafe;
+    }
+    .demo-flex-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background-color: #f1f5f9;
+      padding: 16px;
+      border-radius: 8px;
+    }
+    .demo-grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      background-color: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+    }
+    .demo-position-relative {
+      position: relative;
+      height: 120px;
+      background: #e2e8f0;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    .demo-position-absolute {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #ef4444;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+    .demo-animation-pulse {
+      animation: pulseDemo 2s infinite ease-in-out;
+    }
+    @keyframes pulseDemo {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.85; }
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Header / Barra Superior -->
+  <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="bg-blue-600 text-white p-2.5 rounded-xl shadow-lg flex items-center justify-center">
+          <i class="fa-solid fa-[#000] fa-layer-group text-xl"></i>
+        </div>
+        <div>
+          <h1 class="font-bold text-lg leading-tight text-white">Cursos Online Exeasft</h1>
+          <p class="text-xs text-blue-400 font-medium">Master en Maquetación CSS (.html + .css)</p>
+        </div>
+      </div>
+
+      <!-- Navegación por Pestañas -->
+      <nav class="flex items-center bg-slate-900/80 p-1.5 rounded-xl border border-slate-700/60">
+        <button id="tab-lab-btn" onclick="switchTab('lab')" class="px-4 py-2 text-sm font-semibold rounded-lg transition-all text-white bg-blue-600 shadow-sm flex items-center gap-2">
+          <i class="fa-solid fa-flask"></i> Laboratorio Interactivo
+        </button>
+        <button id="tab-code-btn" onclick="switchTab('code')" class="px-4 py-2 text-sm font-semibold rounded-lg transition-all text-slate-400 hover:text-white flex items-center gap-2">
+          <i class="fa-solid fa-code"></i> Código para GitHub Pages
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 flex flex-col gap-6">
+
+    <!-- SECCIÓN 1: LABORATORIO INTERACTIVO -->
+    <div id="section-lab" class="flex flex-col lg:flex-row gap-6">
+      
+      <!-- Columna Izquierda: Temario y Clases CSS -->
+      <div class="lg:w-1/2 flex flex-col gap-4">
+        <div class="bg-slate-800 rounded-2xl border border-slate-700 p-5 shadow-xl">
+          <h2 class="text-xl font-bold text-white mb-2 flex items-center justify-between">
+            <span><i class="fa-solid fa-book-open text-blue-400 mr-2"></i> Módulos de Maquetación</span>
+            <span class="text-xs bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded-full border border-blue-500/20">Haz clic en una clase</span>
+          </h2>
+          <p class="text-slate-400 text-sm mb-4">Selecciona cualquier clase para ver su demostración visual y comportamiento de maquetado en vivo.</p>
+          
+          <div class="space-y-3 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+            
+            <!-- Módulo 1: Box Model -->
+            <div class="bg-slate-900/60 border border-slate-700/80 rounded-xl p-3">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-blue-400 mb-2">1. Modelo de Caja (Box Model)</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <button onclick="selectConcept('box-model')" class="concept-btn text-left px-3 py-2 bg-slate-800 hover:bg-blue-600/20 hover:border-blue-500 border border-slate-700 rounded-lg text-sm font-mono text-slate-200 transition-all flex items-center justify-between group" data-concept="box-model">
+                  <span>.box-model</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity text-blue-400"></i>
+                </button>
+                <button onclick="selectConcept('box-sizing')" class="concept-btn text-left px-3 py-2 bg-slate-800 hover:bg-blue-600/20 hover:border-blue-500 border border-slate-700 rounded-lg text-sm font-mono text-slate-200 transition-all flex items-center justify-between group" data-concept="box-sizing">
+                  <span>.box-sizing</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity text-blue-400"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Módulo 2: Flexbox -->
+            <div class="bg-slate-900/60 border border-slate-700/80 rounded-xl p-3">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2">2. Maquetación Flexbox</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <button onclick="selectConcept('flex-container')" class="concept-btn text-left px-3 py-2 bg-slate-800 hover:bg-emerald-600/20 hover:border-emerald-500 border border-slate-700 rounded-lg text-sm font-mono text-slate-200 transition-all flex items-center justify-between group" data-concept="flex-container">
+                  <span>.flex-container</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity text-emerald-400"></i>
+                </button>
+                <button onclick="selectConcept('flex-center')" class="concept-btn text-left px-3 py-2 bg-slate-800 hover:bg-emerald-600/20 hover:border-emerald-500 border border-slate-700 rounded-lg text-sm font-mono text-slate-200 transition-all flex items-center justify-between group" data-concept="flex-center">
+                  <span>.flex-center</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity text-emerald-400"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Módulo 3: CSS Grid -->
+            <div class="bg-slate-900/60 border border-slate-700/80 rounded-xl p-3">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-purple-400 mb-2">3. Rejilla CSS Grid</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <button onclick="selectConcept('grid-layout')" class="concept-btn text-left px-3 py-2 bg-slate-800 hover:bg-purple-600/20 hover:border-purple-500 border border-slate-700 rounded-lg text-sm font-mono text-slate-200 transition-all flex items-center justify-between group" data-concept="grid-layout">
+                  <span>.grid-layout</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity text-purple-400"></i>
+                </button>
+                <button onclick="selectConcept('grid-gap')" class="concept-btn text-left px-3 py-2 bg-slate-800 hover:bg-purple-600/20 hover:border-purple-500 border border-slate-700 rounded-lg text-sm font-mono text-slate-200 transition-all flex items-center justify-between group" data-concept="grid-gap">
+                  <span>.grid-gap</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity text-purple-400"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Módulo 4: Posicionamiento -->
+            <div class="bg-slate-900/60 border border-slate-700/80 rounded-xl p-3">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">4. Posicionamiento (Position)</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <button onclick="selectConcept('pos-relative')" class="concept-btn text-left px-3 py-2 bg-slate-800 hover:bg-amber-600/20 hover:border-amber-500 border border-slate-700 rounded-lg text-sm font-mono text-slate-200 transition-all flex items-center justify-between group" data-concept="pos-relative">
+                  <span>.pos-relative</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity text-amber-400"></i>
+                </button>
+                <button onclick="selectConcept('pos-absolute')" class="concept-btn text-left px-3 py-2 bg-slate-800 hover:bg-amber-600/20 hover:border-amber-500 border border-slate-700 rounded-lg text-sm font-mono text-slate-200 transition-all flex items-center justify-between group" data-concept="pos-absolute">
+                  <span>.pos-absolute</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity text-amber-400"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Módulo 5: Animaciones -->
+            <div class="bg-slate-900/60 border border-slate-700/80 rounded-xl p-3">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-pink-400 mb-2">5. Animaciones & Transiciones</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <button onclick="selectConcept('card-hover')" class="concept-btn text-left px-3 py-2 bg-slate-800 hover:bg-pink-600/20 hover:border-pink-500 border border-slate-700 rounded-lg text-sm font-mono text-slate-200 transition-all flex items-center justify-between group" data-concept="card-hover">
+                  <span>.card-hover</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity text-pink-400"></i>
+                </button>
+                <button onclick="selectConcept('pulse-animation')" class="concept-btn text-left px-3 py-2 bg-slate-800 hover:bg-pink-600/20 hover:border-pink-500 border border-slate-700 rounded-lg text-sm font-mono text-slate-200 transition-all flex items-center justify-between group" data-concept="pulse-animation">
+                  <span>.pulse-animation</span>
+                  <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity text-pink-400"></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Renderizado y Panel Explicativo -->
+      <div class="lg:w-1/2 flex flex-col gap-4">
+        
+        <!-- Previsualización Interactiva -->
+        <div class="bg-slate-800 rounded-2xl border border-slate-700 p-5 shadow-xl flex flex-col">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
+            <span><i class="fa-solid fa-desktop mr-2 text-blue-400"></i> Renderizado de Maquetación</span>
+            <span class="text-xs font-normal text-slate-400">Interactivo</span>
+          </h2>
+          
+          <div id="demo-preview-container" class="bg-slate-950 border border-slate-700/80 rounded-xl p-6 min-h-[220px] flex items-center justify-center relative overflow-hidden transition-all">
+            <!-- El contenido dinámico de la demo se inyecta por JavaScript -->
+          </div>
+        </div>
+
+        <!-- Ficha Explicativa Dinámica -->
+        <div class="bg-slate-800 rounded-2xl border border-slate-700 p-5 shadow-xl flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3 border-b border-slate-700 pb-3">
+              <span id="info-tag-name" class="text-lg font-mono font-bold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-lg border border-blue-500/20">.box-model</span>
+              <span id="info-category" class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-700 text-slate-300">Modelo de Caja</span>
+            </div>
+            
+            <p id="info-description" class="text-slate-300 text-sm leading-relaxed mb-4">
+              El modelo de caja comprende el margen (margin), borde (border), relleno (padding) y el contenido real del elemento.
+            </p>
+
+            <div class="mb-4">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Código CSS en maquetado.css:</h4>
+              <div class="bg-slate-950 p-3 rounded-lg border border-slate-800">
+                <pre id="info-css-code" class="text-xs text-blue-300 font-mono overflow-x-auto">.box-model { margin: 20px; padding: 20px; border: 6px dashed #3b82f6; }</pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-3 flex items-start gap-3">
+            <i class="fa-solid fa-lightbulb text-amber-400 text-lg mt-0.5"></i>
+            <div>
+              <h5 class="text-xs font-bold text-blue-300 uppercase tracking-wider">Consejo Pro de Maquetación:</h5>
+              <p id="info-tip" class="text-xs text-slate-300 mt-0.5">Siempre inspecciona el Box Model en las DevTools del navegador para verificar cómo afectan los márgenes y rellenos.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECCIÓN 2: ESTRUCTURA PARA GITHUB PAGES -->
+    <div id="section-code" class="hidden flex-col gap-6">
+      
+      <div class="bg-slate-800 rounded-2xl border border-slate-700 p-6 shadow-xl">
+        <h2 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+          <i class="fa-brands fa-github text-2xl text-blue-400"></i> Estructura de Archivos Separada para GitHub Pages
+        </h2>
+        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+          Para publicar correctamente este tutorial en <strong>GitHub Pages</strong>, debes crear dos archivos independientes en la raíz de tu repositorio: <code class="text-blue-400">maquetado.html</code> y <code class="text-blue-400">maquetado.css</code>.
+        </p>
+
+        <!-- Pestañas de archivos -->
+        <div class="space-y-6">
+          
+          <!-- Bloque Archivo 1: maquetado.css -->
+          <div class="border border-slate-700 rounded-xl overflow-hidden">
+            <div class="bg-slate-900 px-4 py-3 flex justify-between items-center border-b border-slate-700">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-file-code text-emerald-400"></i>
+                <span class="font-mono font-semibold text-sm text-slate-200">maquetado.css</span>
+              </div>
+              <button onclick="copyToClipboard('code-css-text', this)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 border border-slate-600">
+                <i class="fa-regular fa-copy"></i> Copiar maquetado.css
+              </button>
+            </div>
+            <pre class="bg-slate-950 p-4 text-xs font-mono text-emerald-300 overflow-x-auto max-h-72"><code id="code-css-text">/* ===================================================
+   Cursos Online Exeasft - Hoja de Maquetación CSS
+   Archivo: maquetado.css
+   =================================================== */
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+/* 1. Box Model */
+.tag-card-box {
+  margin: 15px;
+  padding: 20px;
+  border: 4px dashed #3b82f6;
+  background-color: #1e293b;
+  border-radius: 8px;
+}
+
+/* 2. Flexbox */
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background-color: #1e293b;
+  border-radius: 8px;
+}
+
+/* 3. CSS Grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 15px;
+  background-color: #1e293b;
+  border-radius: 8px;
+}
+
+/* 4. Posicionamiento */
+.relative-box {
+  position: relative;
+  height: 100px;
+  background-color: #334155;
+  border-radius: 8px;
+}
+
+.absolute-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ef4444;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* 5. Animaciones */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}</code></pre>
+          </div>
+
+          <!-- Bloque Archivo 2: maquetado.html -->
+          <div class="border border-slate-700 rounded-xl overflow-hidden">
+            <div class="bg-slate-900 px-4 py-3 flex justify-between items-center border-b border-slate-700">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-file-code text-blue-400"></i>
+                <span class="font-mono font-semibold text-sm text-slate-200">maquetado.html</span>
+              </div>
+              <button onclick="copyToClipboard('code-html-text', this)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 border border-slate-600">
+                <i class="fa-regular fa-copy"></i> Copiar maquetado.html
+              </button>
+            </div>
+            <pre class="bg-slate-950 p-4 text-xs font-mono text-blue-300 overflow-x-auto max-h-72"><code id="code-html-text">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Tutorial de Maquetación CSS - Exeasft&lt;/title&gt;
+  
+  &lt;!-- Vinculación obligatoria del archivo CSS externo --&gt;
+  &lt;link rel="stylesheet" href="maquetado.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;header&gt;
+    &lt;h1&gt;Aprende Maquetación CSS&lt;/h1&gt;
+    &lt;p&gt;Tutorial Interactivo con maquetado.css&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;main class="flex-container"&gt;
+    &lt;div class="tag-card-box card-hover"&gt;
+      &lt;h2&gt;Tarjeta 1&lt;/h2&gt;
+      &lt;p&gt;Flexbox + Box Model&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class="relative-box card-hover"&gt;
+      &lt;span class="absolute-badge"&gt;Nuevo&lt;/span&gt;
+      &lt;p&gt;Elemento Posicionado&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+        </div>
+
+        <!-- Alerta informativa GitHub Pages -->
+        <div class="mt-6 bg-slate-900 border border-slate-700 rounded-xl p-4 flex items-start gap-3">
+          <i class="fa-solid fa-circle-info text-blue-400 text-lg mt-0.5"></i>
+          <div class="text-xs text-slate-300 space-y-1">
+            <p class="font-semibold text-white">Pasos para publicar en GitHub Pages:</p>
+            <ol class="list-decimal list-inside space-y-1 text-slate-400">
+              <li>Crea una carpeta en tu computador y guarda ambos archivos (<code class="text-blue-300">maquetado.html</code> y <code class="text-blue-300">maquetado.css</code>).</li>
+              <li>Sube ambos archivos a tu repositorio público de GitHub.</li>
+              <li>Ve a <strong>Settings &gt; Pages</strong> en GitHub, selecciona la rama <code class="text-blue-300">main</code> y guarda.</li>
+              <li>¡Listo! Tu sitio cargará dinámicamente los estilos externos desde <code class="text-blue-300">maquetado.css</code>.</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-800 border-t border-slate-700 mt-auto py-4 text-center text-xs text-slate-400">
+    <p>Cursos online exeasft &copy; 2026 — Plataforma Educativa de Maquetación Web</p>
+  </footer>
+
+  <!-- SCRIPT CON LA LÓGICA INTERACTIVA -->
+  <script>
+    // Banco de datos interactivo sobre CSS
+    const cssData = {
+      'box-model': {
+        name: '.box-model',
+        category: 'Modelo de Caja',
+        description: 'El Box Model es la base del diseño CSS. Cada elemento HTML se trata como una caja rectangular compuesta por Margin (Margen externo), Border (Borde), Padding (Relleno interno) y Content (Contenido real).',
+        css: `.box-model {\n  margin: 20px;\n  padding: 20px;\n  border: 4px dashed #3b82f6;\n  background-color: #1e293b;\n}`,
+        tip: 'Recuerda que el margen separa al elemento de otros elementos, mientras que el padding separa el contenido del borde.',
+        demo: `
+          <div class="demo-box-model text-center">
+            <div class="text-xs font-mono font-bold text-blue-600 mb-1">MARGIN (20px)</div>
+            <div class="bg-blue-600 text-white p-3 rounded text-xs font-mono shadow-md">
+              PADDING (20px) + CONTENT
+            </div>
+          </div>
+        `
+      },
+      'box-sizing': {
+        name: '.box-sizing',
+        category: 'Modelo de Caja',
+        description: 'La propiedad box-sizing: border-box incluye el padding y el border dentro del ancho y alto total del elemento, evitando que el tamaño final se desborde o altere el layout.',
+        css: `* {\n  box-sizing: border-box;\n}`,
+        tip: 'Usar box-sizing: border-box como reset general en CSS facilita inmensamente el cálculo exacto de maquetado.',
+        demo: `
+          <div class="w-full max-w-xs bg-emerald-950 p-4 rounded-xl border border-emerald-500/50 text-center">
+            <span class="text-xs font-mono text-emerald-400">box-sizing: border-box</span>
+            <div class="mt-2 bg-emerald-600 text-white p-3 rounded font-mono text-xs">
+              Ancho total exacto respetado
+            </div>
+          </div>
+        `
+      },
+      'flex-container': {
+        name: '.flex-container',
+        category: 'Flexbox',
+        description: 'display: flex convierte a un elemento en un contenedor flexible. Sus elementos hijos se organizan de forma unidireccional (en fila o columna) adaptándose fácilmente al espacio disponible.',
+        css: `.flex-container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  gap: 12px;\n}`,
+        tip: 'Combina justify-content para alinear horizontalmente y align-items para alinear verticalmente.',
+        demo: `
+          <div class="demo-flex-container w-full">
+            <div class="bg-emerald-600 text-white p-3 rounded-lg text-xs font-mono shadow">Flex 1</div>
+            <div class="bg-emerald-600 text-white p-3 rounded-lg text-xs font-mono shadow">Flex 2</div>
+            <div class="bg-emerald-600 text-white p-3 rounded-lg text-xs font-mono shadow">Flex 3</div>
+          </div>
+        `
+      },
+      'flex-center': {
+        name: '.flex-center',
+        category: 'Flexbox',
+        description: 'Una de las técnicas más famosas en CSS. Al combinar justify-content: center y align-items: center, centras perfectamente cualquier contenido horizontal y verticalmente.',
+        css: `.flex-center {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}`,
+        tip: 'Super útil para centrar modales, tarjetas o iconos dentro de botones en tu maquetación.',
+        demo: `
+          <div class="w-full h-32 bg-slate-900 border border-slate-700 rounded-xl flex items-center justify-center">
+            <span class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-lg font-bold text-xs shadow-lg">
+              <i class="fa-solid fa-bullseye mr-1"></i> Centrado Perfecto
+            </span>
+          </div>
+        `
+      },
+      'grid-layout': {
+        name: '.grid-layout',
+        category: 'CSS Grid',
+        description: 'display: grid permite maquetar interfaces complejas en dos dimensiones (filas y columnas al mismo tiempo). grid-template-columns define la estructura de las columnas.',
+        css: `.grid-layout {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 12px;\n}`,
+        tip: 'Utiliza la unidad flexible fr para distribuir el espacio proporcionalmente entre columnas.',
+        demo: `
+          <div class="demo-grid-container w-full">
+            <div class="bg-purple-600 text-white p-3 rounded text-xs font-mono text-center">Col 1</div>
+            <div class="bg-purple-600 text-white p-3 rounded text-xs font-mono text-center">Col 2</div>
+            <div class="bg-purple-600 text-white p-3 rounded text-xs font-mono text-center">Col 3</div>
+          </div>
+        `
+      },
+      'grid-gap': {
+        name: '.grid-gap',
+        category: 'CSS Grid',
+        description: 'La propiedad gap (o grid-gap) establece el espacio o separación exacto entre filas y columnas dentro de una maquetación en rejilla sin necesidad de márgenes individuales.',
+        css: `.grid-gap {\n  display: grid;\n  gap: 16px;\n}`,
+        tip: 'gap también funciona perfectamente en contenedores Flexbox modernos.',
+        demo: `
+          <div class="grid grid-cols-2 gap-4 w-full p-2 bg-purple-950/40 rounded-xl border border-purple-800/50">
+            <div class="bg-purple-700 text-white p-2 text-center rounded text-xs font-mono">Separación (Gap)</div>
+            <div class="bg-purple-700 text-white p-2 text-center rounded text-xs font-mono">Separación (Gap)</div>
+          </div>
+        `
+      },
+      'pos-relative': {
+        name: '.pos-relative',
+        category: 'Posicionamiento',
+        description: 'position: relative mantiene el elemento en el flujo normal del documento, pero sirve como punto de referencia o marco para cualquier hijo posicionado de manera absoluta.',
+        css: `.pos-relative {\n  position: relative;\n}`,
+        tip: 'Sin un contenedor relative, un elemento con position: absolute se posicionará respecto a toda la ventana del navegador.',
+        demo: `
+          <div class="demo-position-relative w-full border border-slate-600 flex items-end">
+            <span class="text-xs text-slate-400 font-mono">Contenedor (.pos-relative)</span>
+          </div>
+        `
+      },
+      'pos-absolute': {
+        name: '.pos-absolute',
+        category: 'Posicionamiento',
+        description: 'position: absolute saca al elemento del flujo estándar de la página y lo ubica exactamente respecto a su ancestro relativo más cercano usando top, right, bottom o left.',
+        css: `.pos-absolute {\n  position: absolute;\n  top: 15px;\n  right: 15px;\n}`,
+        tip: 'Ideal para insignias, botones de cierre en modales o notificaciones superpuestas.',
+        demo: `
+          <div class="demo-position-relative w-full">
+            <span class="demo-position-absolute text-xs font-mono font-bold shadow-lg">
+              Badge Absolute
+            </span>
+            <span class="text-xs text-slate-400 font-mono self-end">Padre Relativo</span>
+          </div>
+        `
+      },
+      'card-hover': {
+        name: '.card-hover',
+        category: 'Animaciones',
+        description: 'La combinación de transform: translateY() y transition otorga una elevación suave e interactiva a las tarjetas cuando el usuario pasa el cursor por encima.',
+        css: `.card-hover {\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\n}\n.card-hover:hover {\n  transform: translateY(-5px);\n}`,
+        tip: 'Usa siempre la propiedad transition para evitar transformaciones bruscas en la interfaz.',
+        demo: `
+          <div class="bg-slate-800 border border-pink-500/50 hover:-translate-y-2 transition-transform duration-300 p-4 rounded-xl cursor-pointer text-center shadow-lg hover:shadow-pink-500/20">
+            <i class="fa-solid fa-hand-pointer text-pink-400 text-xl mb-1"></i>
+            <p class="text-xs font-bold text-slate-200">¡Pasa el mouse sobre mí!</p>
+          </div>
+        `
+      },
+      'pulse-animation': {
+        name: '.pulse-animation',
+        category: 'Animaciones',
+        description: 'Mediante la regla @keyframes y la propiedad animation, se pueden crear efectos visuales dinámicos repetitivos como un latido o resplandor de llamada a la acción.',
+        css: `@keyframes pulse {\n  0%, 100% { transform: scale(1); }\n  50% { transform: scale(1.05); }\n}\n.pulse-animation {\n  animation: pulse 2s infinite;\n}`,
+        tip: 'Asegúrate de no recargar la interfaz con demasiadas animaciones simultáneas.',
+        demo: `
+          <div class="demo-animation-pulse bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-xs px-5 py-3 rounded-xl shadow-lg flex items-center gap-2">
+            <i class="fa-solid fa-bolt"></i> Animación Pulse En Vivo
+          </div>
+        `
+      }
+    };
+
+    // Función para cambiar de concepto en el laboratorio
+    function selectConcept(conceptKey) {
+      const data = cssData[conceptKey];
+      if (!data) return;
+
+      // Actualizar estado visual de los botones
+      document.querySelectorAll('.concept-btn').forEach(btn => {
+        btn.classList.remove('border-blue-500', 'bg-blue-600/20');
+        if (btn.dataset.concept === conceptKey) {
+          btn.classList.add('border-blue-500', 'bg-blue-600/20');
+        }
+      });
+
+      // Actualizar Ficha Explicativa
+      document.getElementById('info-tag-name').textContent = data.name;
+      document.getElementById('info-category').textContent = data.category;
+      document.getElementById('info-description').textContent = data.description;
+      document.getElementById('info-css-code').textContent = data.css;
+      document.getElementById('info-tip').textContent = data.tip;
+
+      // Actualizar Renderizado Demo
+      document.getElementById('demo-preview-container').innerHTML = data.demo;
+    }
+
+    // Navegación por pestañas
+    function switchTab(tab) {
+      const labSec = document.getElementById('section-lab');
+      const codeSec = document.getElementById('section-code');
+      const labBtn = document.getElementById('tab-lab-btn');
+      const codeBtn = document.getElementById('tab-code-btn');
+
+      if (tab === 'lab') {
+        labSec.classList.remove('hidden');
+        labSec.classList.add('flex');
+        codeSec.classList.add('hidden');
+        codeSec.classList.remove('flex');
+
+        labBtn.className = 'px-4 py-2 text-sm font-semibold rounded-lg transition-all text-white bg-blue-600 shadow-sm flex items-center gap-2';
+        codeBtn.className = 'px-4 py-2 text-sm font-semibold rounded-lg transition-all text-slate-400 hover:text-white flex items-center gap-2';
+      } else {
+        codeSec.classList.remove('hidden');
+        codeSec.classList.add('flex');
+        labSec.classList.add('hidden');
+        labSec.classList.remove('flex');
+
+        codeBtn.className = 'px-4 py-2 text-sm font-semibold rounded-lg transition-all text-white bg-blue-600 shadow-sm flex items-center gap-2';
+        labBtn.className = 'px-4 py-2 text-sm font-semibold rounded-lg transition-all text-slate-400 hover:text-white flex items-center gap-2';
+      }
+    }
+
+    // Copiar código al portapapeles
+    function copyToClipboard(elementId, btnElement) {
+      const textToCopy = document.getElementById(elementId).innerText;
+      
+      // Fallback seguro usando textarea
+      const tempTextArea = document.createElement("textarea");
+      tempTextArea.value = textToCopy;
+      document.body.appendChild(tempTextArea);
+      tempTextArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempTextArea);
+
+      // Feedback visual en el botón
+      const originalText = btnElement.innerHTML;
+      btnElement.innerHTML = '<i class="fa-solid fa-check text-emerald-400"></i> ¡Copiado!';
+      btnElement.classList.add('border-emerald-500', 'text-emerald-400');
+      
+      setTimeout(() => {
+        btnElement.innerHTML = originalText;
+        btnElement.classList.remove('border-emerald-500', 'text-emerald-400');
+      }, 2000);
+    }
+
+    // Inicializar con el concepto box-model por defecto
+    window.onload = function() {
+      selectConcept('box-model');
+    };
+  </script>
+</body>
+</html>

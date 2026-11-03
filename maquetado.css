@@ -1,0 +1,103 @@
+/* ==========================================================================
+Cursos Online Exeasft - Archivo Principal de Maquetación CSS
+Nombre del archivo: maquetado.css
+========================================================================== */
+
+/* Reset de márgenes y caja general */
+
+{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: 'Inter', system-ui, -apple-system, sans-serif;
+background-color: #0f172a;
+color: #f8fafc;
+line-height: 1.6;
+}
+
+/* 1. Módulo Modelo de Caja (Box Model) */
+.tag-card-box {
+margin: 20px;
+padding: 20px;
+border: 4px dashed #3b82f6;
+background-color: #1e293b;
+border-radius: 12px;
+}
+
+/* 2. Módulo Flexbox */
+.flex-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 16px;
+padding: 20px;
+background-color: #1e293b;
+border-radius: 12px;
+}
+
+.flex-center {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+/* 3. Módulo CSS Grid */
+.grid-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 16px;
+padding: 20px;
+background-color: #1e293b;
+border-radius: 12px;
+}
+
+/* 4. Módulo Posicionamiento */
+.relative-box {
+position: relative;
+min-height: 120px;
+background-color: #334155;
+border-radius: 12px;
+padding: 16px;
+}
+
+.absolute-badge {
+position: absolute;
+top: 12px;
+right: 12px;
+background-color: #ef4444;
+color: #ffffff;
+font-size: 0.75rem;
+font-weight: 700;
+padding: 4px 10px;
+border-radius: 6px;
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* 5. Módulo Animaciones & Interacciones */
+.card-hover {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+cursor: pointer;
+}
+
+.card-hover:hover {
+transform: translateY(-6px);
+box-shadow: 0 12px 24px -10px rgba(59, 130, 246, 0.4);
+}
+
+.pulse-animation {
+animation: pulseEffect 2s infinite ease-in-out;
+}
+
+@keyframes pulseEffect {
+0%, 100% {
+transform: scale(1);
+opacity: 1;
+}
+50% {
+transform: scale(1.04);
+opacity: 0.9;
+}
+}

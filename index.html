@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- producto de exeasoftware
+     diseño y programación   : Ramiro Valero
+     -->
 <html lang="es" class="h-full bg-slate-50">
 <head>
     <meta charset="UTF-8">
@@ -198,16 +201,36 @@
                 </div>
             </div>
 
-            <!-- Direct CTA to practice -->
+            <!-- Directo a la  practica ------>
             <div class="bg-slate-100 border border-slate-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
                 <div>
                     <h4 class="font-bold text-slate-900">¿Listo para probar estas etiquetas en código real?</h4>
                     <p class="text-sm text-slate-600">Pasa a la segunda parte para ver la estructura interactiva en acción.</p>
                 </div>
                 <button onclick="switchTab('practice')" class="whitespace-nowrap px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all shadow-md hover:shadow-blue-500/20 flex items-center gap-2">
-                    <span>Ir al Laboratorio Interactivo</span>
+                    <span>Ir al Laboratorio Interactivo html</span>
                     <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
+            </div>
+            <div class="bg-slate-100 border border-slate-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                <div>
+                    <h4 class="font-bold text-slate-900">¿Quieres ver como funcionan los colores, lineas y margenes?</h4>
+                    <p class="text-sm text-slate-600">Pasa a la tercera parte para ver la estructura interactiva en acción.</p>
+                </div>
+                <a href="maquetado.html" class="whitespace-nowrap px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all shadow-md hover:shadow-blue-500/20 flex items-center gap-2">
+                    <span>Ir al Laboratorio Interactivo css</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+            <div class="bg-slate-100 border border-slate-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                <div>
+                    <h4 class="font-bold text-slate-900">Intenta programar tu código en hipertexto</h4>
+                    <p class="text-sm text-slate-600">Pasa a la Cuarta parte para ver tu código en acción.</p>
+                </div>
+                <a href="ejercicio.html" class="whitespace-nowrap px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all shadow-md hover:shadow-blue-500/20 flex items-center gap-2">
+                    <span>Ir a un Ejercicio Interactivo haz tu código en linea</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
             </div>
         </section>
 
@@ -500,7 +523,13 @@
                 description: "Representa un botón interactivo sobre el cual el usuario puede hacer clic para desencadenar acciones (enviar un formulario, activar JavaScript, etc.).",
                 example: '<button type="button">Guardar Cambios</button>',
                 tip: "Es preferible usar <button> para acciones interactivas en la app y <a> para navegación entre enlaces."
-            }
+            },
+            /*{
+                nombre: "Maquetado Css",
+                descripcion: "Explicación de un maquetado css.",
+                url: "/maquetado.html",
+                icono: "bi-people-fill"
+            }*/
         };
 
         // Render Theory Grid
