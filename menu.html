@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExeaSoftware</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-crema: #f0f4f8;     /* Equivalente claro / Hielo suave */
+            --color-verde: #1e3a8a;     /* Equivalente principal / Azul marino profundo */
+            --color-terracota: #2563eb; /* Equivalente de acento / Azul rey */
+            --color-oro: #38bdf8;       /* Equivalente secundario / Azul cielo brillante */
+            --color-oscuro: #0f172a;
+        }
+
+        body {
+            background-color: var(--color-crema);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-oscuro);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* CABECERA RESPONSIVA */
+        .header-brand {
+            background-color: var(--color-verde);
+            border-bottom: 5px solid var(--color-oro);
+            padding: 2rem 1rem; /* Más compacto en móviles */
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        /* LOGO QUE SE ADAPTA AL DISPOSITIVO */
+        .logo-img {
+            width: 130px;  /* Tamaño ideal para teléfono */
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--color-oro);
+            background-color: var(--color-crema);
+            transition: transform 0.3s ease;
+        }
+
+        /* TEXTOS RESPONSIVOS */
+        .title-portal {
+            font-family: 'Cinzel', serif;
+            color: var(--color-crema);
+            margin-top: 1rem;
+            letter-spacing: 1px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 1.8rem; /* Tamaño móvil */
+        }
+
+        .subtitle-portal {
+            color: var(--color-oro);
+            font-size: 0.9rem; /* Tamaño móvil */
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Cambios de tamaño exclusivos para Tablets y Computadoras */
+        @media (min-width: 768px) {
+            .header-brand {
+                padding: 3rem 1rem; /* Más espaciado en pantallas grandes */
+            }
+            .logo-img {
+                width: 200px; /* Crece en Tablet/PC */
+                height: 200px;
+            }
+            .title-portal {
+                font-size: 2.8rem;
+                letter-spacing: 2px;
+                margin-top: 1.5rem;
+            }
+            .subtitle-portal {
+                font-size: 1.1rem;
+                letter-spacing: 2px;
+            }
+        }
+
+        /* TARJETAS DE SISTEMAS */
+        .system-card {
+            background-color: #ffffff;
+            border: 1px solid rgba(148, 88, 61, 0.2);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Desactivamos el efecto de elevar la tarjeta en móviles para mejorar la usabilidad táctil */
+        @media (min-width: 992px) {
+            .system-card:hover {
+                transform: translateY(-7px);
+                box-shadow: 0 10px 20px rgba(148, 88, 61, 0.15);
+                border-color: var(--color-oro);
+            }
+        }
+
+        .icon-box {
+            background-color: var(--color-verde);
+            color: var(--color-oro);
+            width: 55px;
+            height: 55px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title-sys {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            color: var(--color-verde);
+        }
+
+        .btn-access {
+            background-color: var(--color-verde);
+            color: var(--color-crema);
+            border: none;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            margin-top: auto; /* Empuja el botón al fondo si las descripciones tienen tamaños diferentes */
+        }
+
+        .btn-access:hover, .btn-access:active {
+            background-color: var(--color-terracota);
+            color: #ffffff;
+        }
+
+        footer {
+            background-color: var(--color-oscuro);
+            color: #a0a8a4;
+            padding: 1.5rem 1rem;
+            margin-top: auto;
+            border-top: 3px solid var(--color-terracota);
+            font-size: 0.85rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header-brand">
+        
+        <div class="container">
+            <img src="exeasftw.png" alt="ExeaSoftware Logo" class="logo-img shadow">
+            <h1 class="title-portal">Cursos Online</h1>
+            <p class="subtitle-portal text-uppercase m-0">Multiplataforma de Cursos online Web</p>
+        </div>
+    </header>
+
+    <main class="container my-4 my-md-5 px-4">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center mb-3 mb-md-4">
+                <h2 class="h5 fw-bold text-secondary text-uppercase mb-1" style="letter-spacing: 1px;">Clases Disponibles</h2>
+                <hr class="mx-auto" style="width: 50px; height: 3px; background-color: var(--color-oro); opacity: 1;">
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3 g-md-4" id="grid-sistemas">
+            </div>
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="m-0">&copy; 2026 <b>Exeasoftware</b>. Todos los derechos reservados.</p>
+            <small>Diseño y Desarrollo de Sistemas...</small>
+        </div>
+    </footer>
+
+    <script>
+        const misSistemas = [
+            {
+                nombre: "Desarrollo Web",
+                descripcion: "Inicio con codigo en etiquetas para el navegador como html - css.",
+                url: "inicio-html.html",
+                icono: "bi-cart3"
+            },
+            {
+                nombre: "Jquery",
+                descripcion: "Trata de entender este FrameWork, puedes usarlo en línea o descargarlo Jquery.",
+                url: "jquery-panel.html",
+                icono: "bi-car-front-fill"
+            },
+            {
+                nombre: "Bootstrap",
+                descripcion: "Haz tus páginas mas dinamicas ampliando las clases este framework combina javaScript, css, jquery.",
+                url: "bootstrap-panel.php",
+                icono: "bi-layers-half"
+            },
+            
+            {
+                nombre: "JavaScript",
+                descripcion: "Cursos ONLINE de Programación para uso de JavaScript (Bases mas importantes).",
+                url: "javascript-panel.html",
+                icono: "bi-chat"
+            },
+            {
+                nombre: "Editor",
+                descripcion: "Haz tu código en hipertexto y ve el resultado en la ventana siguiente.",
+                url: "ejercicio.html",
+                icono: "bi-chat"
+            },
+            {
+                nombre: "Tetris Arcade",
+                descripcion: "Juego Demostrativo solo HTML - JavaScript basado en tetris de 1984 del programador Alexei Pazshitnov.",
+                url: "tetris_arcade.html",
+                icono: "bi-people-fill"
+            }
+        ];
+
+        function cargarSistemas() {
+            const contenedor = document.getElementById('grid-sistemas');
+            contenedor.innerHTML = "";
+
+            misSistemas.forEach(sistema => {
+                const cardHTML = `
+                    <div class="col">
+                        <div class="system-card p-3 p-md-4 shadow-sm">
+                            <div class="icon-box">
+                                <i class="${sistema.icono}"></i>
+                            </div>
+                            <h4 class="card-title-sys h5 mb-2">${sistema.nombre}</h4>
+                            <p class="text-muted small mb-4">${sistema.descripcion}</p>
+                            <a href="${sistema.url}" class="btn btn-access w-100 py-2 btn-lg-md">
+                                Ingresar Sistema <i class="bi bi-arrow-right-short ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                contenedor.innerHTML += cardHTML;
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", cargarSistemas);
+    </script>
+</body>
+</html>

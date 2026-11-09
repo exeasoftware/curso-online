@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial Interactivo de HTML</title>
+  
+  <!-- Enlace al archivo de maquetado CSS externo -->
+  <link rel="stylesheet" href="maquetado.css">
+</head>
+<body>
+
+  <header>
+    <h1>Tutorial Interactivo de HTML</h1>
+    <p>Aprende haciendo clic en las etiquetas</p>
+  </header>
+
+  <div class="container">
+    <h2>Explorador de Etiquetas</h2>
+    <p>Haz clic en cualquiera de las siguientes etiquetas para ver su resumen y función:</p>
+
+    <!-- Tarjeta de ejemplo: <h1> -->
+    <div class="tag-card" onclick="this.classList.toggle('active')">
+      <code>&lt;h1&gt;</code> - Encabezado Principal
+      <div class="info-box">
+        <strong>Función:</strong> Define el título principal o más importante del documento. Solo debe haber uno por página por buenas prácticas de SEO.
+      </div>
+    </div>
+
+    <!-- Tarjeta de ejemplo: <p> -->
+    <div class="tag-card" onclick="this.classList.toggle('active')">
+      <code>&lt;p&gt;</code> - Párrafo
+      <div class="info-box">
+        <strong>Función:</strong> Contiene bloques de texto. Los navegadores añaden automáticamente un margen antes y después de cada párrafo.
+      </div>
+    </div>
+
+    <!-- Tarjeta de ejemplo: <a> -->
+    <div class="tag-card" onclick="this.classList.toggle('active')">
+      <code>&lt;a&gt;</code> - Enlace / Hipervínculo
+      <div class="info-box">
+        <strong>Función:</strong> Permite conectar a otras páginas o recursos mediante el atributo <code>href</code>.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

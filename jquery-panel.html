@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exeasftwr jQuery</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Estilos personalizados para la demo del panel */
+    #mi-panel {
+      min-height: 180px;
+      transition: border-color 0.3s;
+    }
+    .panel-destacado {
+      border: 3px solid #ffc107 !important;
+      box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+    }
+    .texto-gigante {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <div class="container py-4">
+    <!-- Encabezado con navegación al Menú Principal -->
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+      <h2><i class="text-primary">jQuery</i> Panel - Demo & Tutorial - EXEASOFTWARE</h2>
+      <a href="menu.html" class="btn btn-danger btn-sm">Menú Principal</a>
+    </div>
+
+    <!-- Área de la Alerta de Notificaciones -->
+    <div id="alert-box" class="alert alert-info alert-dismissible fade show d-none" role="alert">
+      <span id="alert-msg">Mensaje de notificación...</span>
+      <button type="button" class="btn-close" id="btn-cerrar-alerta"></button>
+    </div>
+
+    <div class="row g-4">
+      <!-- Columna Izquierda: Panel Interactivo -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-header bg-dark text-white fw-bold">
+            Panel de Prueba
+          </div>
+          <div class="card-body">
+            <!-- El elemento objetivo para nuestras manipulaciones -->
+            <div id="mi-panel" class="p-4 bg-white rounded border border-2 text-center">
+              <h4 id="panel-titulo" class="text-primary">¡Hola! Soy el Panel</h4>
+              <p id="panel-texto" class="text-muted mb-0">Interactúa con los controles de la derecha para modificar mis clases y ver métodos de jQuery en acción.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Formulario de Controles jQuery -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white fw-bold">
+            Controles de Métodos jQuery
+          </div>
+          <div class="card-body">
+            <form id="form-panel-controls" onsubmit="return false;">
+              
+              <!-- Cambiar Texto -->
+              <div class="mb-3">
+                <label for="input-titulo" class="form-label font-monospace fw-bold">1. .text() / .val()</label>
+                <div class="input-group">
+                  <input type="text" id="input-titulo" class="form-control" placeholder="Escribe un nuevo título...">
+                  <button class="btn btn-outline-primary" type="button" id="btn-cambiar-texto">Aplicar</button>
+                </div>
+              </div>
+
+              <!-- Alternar Clases CSS -->
+              <div class="mb-3">
+                <label class="form-label font-monospace fw-bold">2. .addClass() / .removeClass() / .toggleClass()</label>
+                <div class="d-flex gap-2 wrap">
+                  <button type="button" id="btn-destacar" class="btn btn-warning btn-sm">Toggle Destacado</button>
+                  <button type="button" id="btn-agrandar" class="btn btn-secondary btn-sm">Toggle Texto Gigante</button>
+                </div>
+              </div>
+
+              <!-- Efectos y Animaciones de Ocultar/Mostrar -->
+              <div class="mb-3">
+                <label class="form-label font-monospace fw-bold">3. Visualización y Animaciones</label>
+                <div class="d-flex flex-wrap gap-2">
+                  <button type="button" id="btn-fade" class="btn btn-info btn-sm text-white">.fadeToggle()</button>
+                  <button type="button" id="btn-slide" class="btn btn-success btn-sm">.slideToggle()</button>
+                  <button type="button" id="btn-hide-show" class="btn btn-dark btn-sm">.hide() / .show()</button>
+                </div>
+              </div>
+
+              <!-- Manipulación de Contenido HTML -->
+              <div class="mb-3">
+                <label class="form-label font-monospace fw-bold">4. .html() / .empty()</label>
+                <div class="d-flex gap-2">
+                  <button type="button" id="btn-reset-panel" class="btn btn-outline-danger btn-sm">Resetear Panel</button>
+                  <button type="button" id="btn-limpiar-panel" class="btn btn-outline-dark btn-sm">.empty() (Vaciar)</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explicación de Métodos -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <h5 class="card-title text-secondary border-bottom pb-2">Guía Explicativa de Clases y Métodos Utilizados</h5>
+            
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover align-middle mt-2">
+                <thead class="table-light">
+                  <tr>
+                    <th style="width: 25%;">Método / Clase</th>
+                    <th style="width: 25%;">Tipo</th>
+                    <th>Descripción y Uso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>$('#id').text('contenido')</code></td>
+                    <td><span class="badge bg-primary">Método jQuery</span></td>
+                    <td>Asigna o devuelve el contenido de texto plano de los elementos seleccionados (sin interpretar HTML).</td>
+                  </tr>
+                  <tr>
+                    <td><code>$('#id').val()</code></td>
+                    <td><span class="badge bg-primary">Método jQuery</span></td>
+                    <td>Obtiene o establece el valor actual de un elemento del formulario (como un <code>&lt;input&gt;</code>).</td>
+                  </tr>
+                  <tr>
+                    <td><code>.toggleClass('clase')</code></td>
+                    <td><span class="badge bg-primary">Método jQuery</span></td>
+                    <td>Agrega la clase CSS si no existe, o la elimina si ya está aplicada en el elemento seleccionador.</td>
+                  </tr>
+                  <tr>
+                    <td><code>.fadeToggle() / .slideToggle()</code></td>
+                    <td><span class="badge bg-primary">Método jQuery</span></td>
+                    <td>Alternan la visibilidad de un elemento con animaciones de desvanecimiento (fade) o deslizamiento (slide).</td>
+                  </tr>
+                  <tr>
+                    <td><code>.empty()</code></td>
+                    <td><span class="badge bg-primary">Método jQuery</span></td>
+                    <td>Remueve todos los elementos hijos y contenido que estén dentro del elemento seleccionado.</td>
+                  </tr>
+                  <tr>
+                    <td><code>.panel-destacado</code></td>
+                    <td><span class="badge bg-success">Clase CSS Personalizada</span></td>
+                    <td>Añade un borde amarillo resplandeciente (box-shadow) al panel.</td>
+                  </tr>
+                  <tr>
+                    <td><code>.texto-gigante</code></td>
+                    <td><span class="badge bg-success">Clase CSS Personalizada</span></td>
+                    <td>Modifica el tamaño de la fuente a 1.5rem y la coloca en negrita dentro del panel.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Script Controlador del Panel -->
+  <script src="panel-control.js"></script>
+</body>
+</html>

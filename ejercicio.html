@@ -57,6 +57,7 @@
     <div class="container-fluid">
         <p>Exeasoftware | Curso online</p>
       <span class="navbar-brand mb-0 h1"> Previsualizador de HTML en Tiempo Real</span>
+      <button id="btn-inicio" class="btn btn-outline-light btn-sm">Menú Principal</a>
       <button id="btn-limpiar" class="btn btn-outline-light btn-sm">Limpiar Código</button>
     </div>
   </nav>
@@ -118,7 +119,10 @@
       $('#codigo-html').on('input propertychange', function() {
         actualizarVistaPrevia();
       });
-
+      // Regreso a menu principal
+      $('#btn-inicio').click(function() {
+        window.location.href = 'menu.html';
+      });
       // Botón para limpiar el área de texto
       $('#btn-limpiar').click(function() {
         $('#codigo-html').val('');

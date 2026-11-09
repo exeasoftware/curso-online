@@ -1,0 +1,16 @@
+[
+  {
+    "usuario": "supersusuario",
+    "clave": "super123456usuario",
+    "telefono": "04148252604",
+    "ippublica": "190.254.XXX.XXX",
+    "activo": false
+  },
+  {
+    "usuario": "root",
+    "clave": "123456",
+    "telefono": "04148252604",
+    "ippublica": "190.250.247.237",
+    "activo": true
+  }
+]

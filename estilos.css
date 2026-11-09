@@ -1,0 +1,62 @@
+/* Estilos generales de la página */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Cabecera principal */
+header {
+  text-align: center;
+  background-color: #0056b3;
+  color: #ffffff;
+  padding: 20px 0;
+  border-radius: 8px;
+}
+
+/* Contenedor del tutorial */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos y secciones */
+h2 {
+  color: #0056b3;
+  border-bottom: 2px solid #0056b3;
+  padding-bottom: 5px;
+}
+
+/* Estilos para las tarjetas de etiquetas interactivas */
+.tag-card {
+  background-color: #eef2f5;
+  border-left: 5px solid #0056b3;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tag-card:hover {
+  background-color: #dce7f3;
+}
+
+/* Ocultar/Mostrar explicación interactiva */
+.info-box {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  background: #e2f0d9;
+  border: 1px solid #b2d8a3;
+  border-radius: 4px;
+}
+
+.tag-card.active .info-box {
+  display: block;
+}
