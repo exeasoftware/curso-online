@@ -12,5 +12,12 @@
     "telefono": "04148252604",
     "ippublica": "190.250.247.237",
     "activo": true
+  },
+  {
+    "usuario": "alexifernandolacruz8102@gmail.com",
+    "clave": "123456",
+    "telefono": "04247486454",
+    "ippublica": "200.44.32.12",
+    "activo": true
   }
 ]
