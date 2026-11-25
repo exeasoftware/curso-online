@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratorio Fetch API - Curso JavaScript</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f4f6f9; }
+    .consola-fetch {
+      background-color: #1e1e1e;
+      color: #00ff88;
+      font-family: 'Courier New', Courier, monospace;
+      min-height: 180px;
+      max-height: 320px;
+      overflow-y: auto;
+      border-radius: 6px;
+      padding: 14px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container py-4">
+    <!-- Encabezado -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center bg-white p-3 rounded shadow-sm mb-4 border gap-2">
+      <div>
+        <h3 class="mb-0 text-primary fw-bold">Laboratorio de Fetch API y Asincronía</h3>
+        <small class="text-muted">Aprende a realizar peticiones HTTP (GET, POST), leer archivos JSON y manejar promesas con async/await.</small>
+      </div>
+      <div class="d-flex gap-2">
+        <a href="javascript-tutorial.html" class="btn btn-outline-primary btn-sm">Tutorial JS</a>
+        <a href="javascript-storage.html" class="btn btn-outline-dark btn-sm">Ir a LocalStorage</a>
+        <a href="menu.html" class="btn btn-danger btn-sm">Menú Principal</a>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Columna Teórica -->
+      <div class="col-lg-5">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-dark text-white fw-bold">
+            Anatomía de una Petición Fetch
+          </div>
+          <div class="card-body">
+            <p class="small">
+              <code>fetch()</code> es la API nativa moderna de JavaScript para realizar peticiones de red asíncronas (reemplazando al antiguo <code>XMLHttpRequest</code> y complementando a <code>$.getJSON()</code> de jQuery).
+            </p>
+            <h6 class="fw-bold text-primary small">Flujo en 2 pasos (Promesas):</h6>
+            <ol class="small">
+              <li><strong>Respuesta HTTP:</strong> <code>const res = await fetch(url)</code> devuelve los encabezados y el estado (<code>res.ok</code>, <code>res.status</code>).</li>
+              <li><strong>Extracción del cuerpo:</strong> <code>const datos = await res.json()</code> convierte el flujo recibido en un objeto o arreglo JavaScript usable.</li>
+            </ol>
+
+            <label class="form-label fw-bold small text-secondary mt-2">Sintaxis recomendada (async / await):</label>
+            <pre class="bg-dark text-light p-3 rounded small mb-0"><code>async function consultarDatos(url) {
+  try {
+    const respuesta = await fetch(url);
+    if (!respuesta.ok) {
+      throw new Error("Error HTTP: " + respuesta.status);
+    }
+    const datos = await respuesta.json();
+    console.log(datos);
+  } catch (error) {
+    console.error("Fallo de red:", error);
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Práctica Interactiva -->
+      <div class="col-lg-7">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-primary text-white fw-bold">
+            Pruebas en Vivo contra APIs Reales y JSON Local
+          </div>
+          <div class="card-body">
+            <!-- Prueba 1: GET API Pública -->
+            <div class="border rounded p-3 mb-3 bg-light">
+              <h6 class="fw-bold mb-1">1. Petición GET (Obtener tu IP Pública o Usuarios de Prueba)</h6>
+              <p class="small text-muted mb-2">Consulta un servicio externo en tiempo real usando <code>fetch()</code>.</p>
+              <div class="d-flex flex-wrap gap-2">
+                <button id="btn-fetch-ip" class="btn btn-success btn-sm">GET: Obtener mi IP Pública</button>
+                <button id="btn-fetch-users" class="btn btn-primary btn-sm">GET: Listar 3 Usuarios API</button>
+                <button id="btn-fetch-local" class="btn btn-secondary btn-sm">GET: Leer parametros.json local</button>
+              </div>
+            </div>
+
+            <!-- Prueba 2: POST Enviar datos -->
+            <div class="border rounded p-3 mb-3 bg-light">
+              <h6 class="fw-bold mb-1">2. Petición POST (Enviar un objeto JSON al servidor)</h6>
+              <p class="small text-muted mb-2">Simula el envío de un nuevo registro mediante <code>method: 'POST'</code> y <code>JSON.stringify()</code>.</p>
+              <form id="form-fetch-post" class="row g-2">
+                <div class="col-sm-5">
+                  <input type="text" id="post-nombre" class="form-control form-control-sm" placeholder="Nombre de usuario" value="ramiro_dev" required>
+                </div>
+                <div class="col-sm-4">
+                  <input type="text" id="post-rol" class="form-control form-control-sm" placeholder="Rol" value="Administrador" required>
+                </div>
+                <div class="col-sm-3">
+                  <button type="submit" class="btn btn-warning btn-sm w-100 fw-bold">Enviar POST</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Consola de Salida -->
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="fw-bold small text-secondary">Respuesta del Servidor / Consola:</span>
+              <button id="btn-limpiar-fetch" class="btn btn-link btn-sm text-decoration-none p-0">Limpiar consola</button>
+            </div>
+            <div id="consola-fetch" class="consola-fetch small">> Esperando petición...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="javascript-fetch.js"></script>
+</body>
+</html>

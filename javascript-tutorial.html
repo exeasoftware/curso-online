@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial Interactivo de JavaScript - Curso Web</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f6f9;
+    }
+    .tema-selector {
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .tema-selector:hover {
+      background-color: #e9ecef;
+      padding-left: 1.25rem;
+    }
+    .tema-selector.activo {
+      background-color: #0d6efd;
+      color: #ffffff !important;
+      font-weight: 600;
+      border-color: #0d6efd;
+    }
+    .consola-salida {
+      background-color: #1e1e1e;
+      color: #00ff88;
+      font-family: 'Courier New', Courier, monospace;
+      min-height: 90px;
+      border-radius: 6px;
+      padding: 12px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container py-4">
+    <!-- Encabezado y botón de retorno consistente con el curso -->
+    <div class="d-flex justify-content-between align-items-center bg-white p-3 rounded shadow-sm mb-4 border">
+      <div>
+        <h3 class="mb-0 text-primary fw-bold">Módulo JavaScript: Guía Segmentada</h3>
+        <small class="text-muted">Selecciona un tema del menú izquierdo para estudiar su sintaxis y probarlo en vivo.</small>
+      </div>
+      <div class="d-flex gap-2">
+        <a href="javascript-autoevaluacion.html" class="btn btn-success btn-sm">Ir a Autoevaluación</a>
+        <a href="menu.html" id="btn-inicio" class="btn btn-danger btn-sm">Volver al Menú Principal</a>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- COLUMNA IZQUIERDA: Menú de Temas Segmentados -->
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-dark text-white fw-bold">
+            Contenido del Tutorial (12 Módulos)
+          </div>
+          <div class="list-group list-group-flush" id="lista-temas">
+            <a href="#" class="list-group-item list-group-item-action tema-selector" data-key="variables">1.- Parámetros y Variables</a>
+            <a href="#" class="list-group-item list-group-item-action tema-selector" data-key="condiciones">2.- Condiciones y Casos (if / switch)</a>
+            <a href="#" class="list-group-item list-group-item-action tema-selector" data-key="repeticion">3.- Estructuras de Repetición (Bucles)</a>
+            <a href="#" class="list-group-item list-group-item-action tema-selector" data-key="arreglos">4.- Arreglos y Matrices</a>
+            <a href="#" class="list-group-item list-group-item-action tema-selector" data-key="funciones_objetos">5.- Funciones y Objetos</a>
+            <a href="#" class="list-group-item list-group-item-action tema-selector" data-key="clases">6.- Clases y Métodos (POO)</a>
+            <a href="#" class="list-group-item list-group-item-action tema-selector" data-key="html_a_js">7.- Enviar Parámetros de HTML a JS</a>
+            <a href="#" class="list-group-item list-group-item-action tema-selector" data-key="ejecutar_desde_html">8.- Ejecutar Función JS desde HTML</a>
+            <a href="#" class="list-group-item list-group-item-action tema-selector bg-light" data-key="dom_eventos">9.- [Extra] DOM y Eventos con jQuery</a>
+            <a href="#" class="list-group-item list-group-item-action tema-selector bg-light" data-key="json_async">10.- [Extra] Lectura JSON y Asincronía</a>
+            <a href="#" class="list-group-item list-group-item-action tema-selector bg-light" data-key="storage">11.- [Extra] LocalStorage y SessionStorage</a>
+            <a href="#" class="list-group-item list-group-item-action tema-selector bg-light" data-key="errores">12.- [Extra] Manejo de Errores (try/catch)</a>
+            <a href="javascript-fetch.html" class="list-group-item list-group-item-action bg-light">13.- [Ejemplo] Laboratorio Fetch API</a>
+            <a href="javascript-storage.html" class="list-group-item list-group-item-action bg-light">14.- [Ejemplo] Laboratorio Web Storage</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA: Área de Estudio y Laboratorio Interactivo -->
+      <div class="col-md-8">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <span class="fw-bold">Panel de Estudio y Laboratorio</span>
+            <span class="badge bg-light text-primary" id="badge-categoria">Introducción</span>
+          </div>
+          <div class="card-body" id="contenido-dinamico">
+            <div class="text-center py-5 text-muted">
+              <h5>Bienvenido al Laboratorio de JavaScript</h5>
+              <p class="mb-0">Haz clic en cualquiera de las opciones de la izquierda para desplegar su explicación detallada, código de ejemplo y una prueba interactiva.</p>
+              <P class="mb-0"> EXEASOFTWARE - +584148252604 - RAMIRO VALERO</P>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery y Bootstrap 5 JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Script principal del tutorial -->
+  <script src="javascript-tutorial.js"></script>
+</body>
+</html>
